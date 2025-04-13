@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ sidebarOpen: false }" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Reports | TLCATT</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/TLCATT-LOGO.png" />
+
+    <!-- Tailwind & Alpine -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-100 min-h-screen flex flex-col md:flex-row overflow-x-hidden">
+  
+    <!-- Mobile Sidebar Overlay -->
+    <div x-show="sidebarOpen" class="fixed inset-0 z-40 bg-black bg-opacity-50 md:hidden" @click="sidebarOpen = false"></div>
+  
+    <!-- Sidebar -->
+          <aside 
+        :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'" 
+        class="fixed top-0 left-0 z-50 w-64 bg-white shadow-md p-4 transform transition-transform duration-300 ease-in-out h-screen md:h-full md:translate-x-0 md:relative md:block"
+      >
+        <!-- Sidebar Header -->
+        <div class="flex flex-col items-center justify-center mb-6">
+          <img src="assets/TLCATT-LOGO.png" alt="TLC Logo" class="w-auto h-auto">
+        </div>
+
+        <!-- Navigation -->
+        <nav class="space-y-4">
+          <a href="admindashboard.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600 font-medium">
+            <span class="material-icons">dashboard</span>
+            <span>Dashboard</span>
+          </a>
+          <a href="alumnidata.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600 font-medium">
+            <span class="material-icons">group</span>
+            <span>Alumni Data<Data></Data></span>
+          </a>
+          <a href="reports.html" class="flex items-center space-x-2 text-blue-600 font-semibold">
+            <span class="material-icons">bar_chart</span>
+            <span>Reports</span>
+          </a>
+          <a href="export.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600 font-medium">
+            <span class="material-icons">download</span>
+            <span>Exports</span>
+          </a>
+          <a href="index.html" class="flex items-center space-x-2 text-gray-700 hover:text-red-600 font-medium">
+            <span class="material-icons">logout</span>
+            <span>Log Out</span>
+          </a>
+        </nav>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>      
+      </aside>
+
+  
+
+    <!-- Main Content Wrapper -->
+    <div class="flex-1 flex flex-col w-full">
+
+      <!-- Top Navbar -->
+      <header class="bg-white shadow-md p-4 flex justify-between items-center sticky top-0 z-30">
+        <!-- Sidebar Toggle (Mobile) -->
+        <div class="flex md:hidden">
+          <!-- Mobile Button -->
+          <button @click="sidebarOpen = !sidebarOpen" class="text-gray-600 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+      
+        <!-- Title (Centered) -->
+        <h1 class="text-lg md:text-xl font-semibold text-gray-800 flex-1 text-center">Reports</h1>
+      
+        <!-- Profile Dropdown -->
+        <div class="relative" x-data="{ open: false }">
+          <div class="flex items-center space-x-2 cursor-pointer" @click="open = !open">
+            <span class="text-sm text-gray-600 hidden sm:block">Admin</span>
+            <img src="assets/profile.jpeg" alt="Profile" class="w-10 h-10 rounded-full border">
+          </div>
+          <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-36 bg-white border rounded shadow-lg z-50">
+            <a href="index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-500 hover:text-white transition">Log Out</a>
+          </div>
+        </div>
+      </header>
+
+  <!-- Main Content -->
+  <main class="flex-1 p-6">
+
+    <!-- Summary Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+      <div class="bg-white p-6 rounded-xl shadow-md text-center">
+        <h2 class="text-2xl font-bold text-blue-600">150</h2>
+        <p class="text-sm text-gray-600">Total Alumni</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-md text-center">
+        <h2 class="text-2xl font-bold text-green-600">95</h2>
+        <p class="text-sm text-gray-600">Employed</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-md text-center">
+        <h2 class="text-2xl font-bold text-yellow-500">35</h2>
+        <p class="text-sm text-gray-600">Seeking Opportunities</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-md text-center">
+        <h2 class="text-2xl font-bold text-red-500">20</h2>
+        <p class="text-sm text-gray-600">No Data</p>
+      </div>
+    </div>
+
+    <!-- Employment Table -->
+    <div class="bg-white rounded-xl shadow-md p-6">
+      <h2 class="text-xl font-semibold text-gray-800 mb-4">Employment Breakdown</h2>
+      <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-200 text-sm text-left">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="px-4 py-2 font-medium text-gray-700">Name</th>
+              <th class="px-4 py-2 font-medium text-gray-700">Course</th>
+              <th class="px-4 py-2 font-medium text-gray-700">Year Graduated</th>
+              <th class="px-4 py-2 font-medium text-gray-700">Status</th>
+              <th class="px-4 py-2 font-medium text-gray-700">Company</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <tr>
+              <td class="px-4 py-2">Maria Santos</td>
+              <td class="px-4 py-2">BSIT</td>
+              <td class="px-4 py-2">2022</td>
+              <td class="px-4 py-2 text-green-600">Employed</td>
+              <td class="px-4 py-2">Accenture</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-2">John Rivera</td>
+              <td class="px-4 py-2">BSCS</td>
+              <td class="px-4 py-2">2021</td>
+              <td class="px-4 py-2 text-yellow-600">Seeking</td>
+              <td class="px-4 py-2">N/A</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-2">Angelica Cruz</td>
+              <td class="px-4 py-2">BSIS</td>
+              <td class="px-4 py-2">2023</td>
+              <td class="px-4 py-2 text-green-600">Employed</td>
+              <td class="px-4 py-2">GCash</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

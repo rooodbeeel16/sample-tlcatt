@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ sidebarOpen: false }" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Admin Dashboard | TLCATT</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/TLCATT-LOGO.png" />
+
+    <!-- Tailwind & Alpine -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-100 min-h-screen flex flex-col md:flex-row overflow-x-hidden">
+  
+    <!-- Mobile Sidebar Overlay -->
+    <div x-show="sidebarOpen" class="fixed inset-0 z-40 bg-black bg-opacity-50 md:hidden" @click="sidebarOpen = false"></div>
+  
+    <!-- Sidebar -->
+    <aside 
+    :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'" 
+    class="fixed top-0 left-0 z-50 w-64 bg-white shadow-md p-4 transform transition-transform duration-300 ease-in-out h-screen 
+            md:top-0 md:translate-x-0 md:transform-none md:sticky"
+  >
+        <!-- Sidebar Header -->
+        <div class="flex flex-col items-center justify-center mb-6">
+          <img src="assets/TLCATT-LOGO.png" alt="TLC Logo" class="w-auto h-auto">
+        </div>
+
+        <!-- Navigation -->
+        <nav class="space-y-4">
+          <a href="admindashboard.html" class="flex items-center space-x-2 text-blue-600 font-semibold">
+            <span class="material-icons">dashboard</span>
+            <span>Dashboard</span>
+          </a>
+          <a href="alumnidata.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600 font-medium">
+            <span class="material-icons">group</span>
+            <span>Alumni Data<Data></Data></span>
+          </a>
+          <a href="reports.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600 font-medium">
+            <span class="material-icons">bar_chart</span>
+            <span>Reports</span>
+          </a>
+          <a href="export.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600 font-medium">
+            <span class="material-icons">download</span>
+            <span>Exports</span>
+          </a>
+          <a href="index.html" class="flex items-center space-x-2 text-gray-700 hover:text-red-600 font-medium">
+            <span class="material-icons">logout</span>
+            <span>Log Out</span>
+          </a>
+        </nav>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>      
+      </aside>
+
+  
+
+    <!-- Main Content Wrapper -->
+    <div class="flex-1 flex flex-col w-full">
+
+      <!-- Top Navbar -->
+      <header class="bg-white shadow-md p-4 flex justify-between items-center sticky top-0 z-30">
+        <!-- Sidebar Toggle (Mobile) -->
+        <div class="flex md:hidden">
+          <!-- Mobile Button -->
+          <button @click="sidebarOpen = !sidebarOpen" class="text-gray-600 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+        
+      
+        <!-- Title (Centered) -->
+        <h1 class="text-lg md:text-xl font-semibold text-gray-800 flex-1 text-center">Admin Dashboard</h1>
+      
+        <div class="flex items-center space-x-4">
+          <!-- Notifications -->
+      <div class="relative" x-data="{ notifyOpen: false }">
+        <!-- Bell Button -->
+        <button @click="notifyOpen = !notifyOpen" class="relative focus:outline-none">
+          <span class="material-icons text-gray-600 text-2xl">notifications</span>
+          <span class="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-xs rounded-full px-1.5 py-0.5 animate-bounce">
+            12
+          </span>
+        </button>
+
+        <!-- Notification Dropdown -->
+        <div
+          x-show="notifyOpen"
+          @click.away="notifyOpen = false"
+          x-transition:enter="transition ease-out duration-200"
+          x-transition:enter-start="opacity-0 scale-90"
+          x-transition:enter-end="opacity-100 scale-100"
+          x-transition:leave="transition ease-in duration-100"
+          x-transition:leave-start="opacity-100 scale-100"
+          x-transition:leave-end="opacity-0 scale-95"
+          class="absolute right-0 mt-3 w-72 bg-white border border-gray-200 rounded-xl shadow-xl z-50 overflow-hidden"
+        >
+          <!-- Header -->
+          <div class="bg-blue-400  text-white p-4 text-sm font-semibold">
+            Alumni Notifications
+          </div>
+
+          <!-- Notification Items -->
+          <ul class="divide-y divide-gray-100 text-sm text-gray-700 max-h-72 overflow-y-auto">
+            <li class="flex items-start space-x-2 p-4 hover:bg-gray-50 transition">
+              <span class="material-icons text-indigo-500 text-base">login</span>
+              <div>
+                <p class="font-medium">User login detected</p>
+                <p class="text-xs text-gray-500">John Doe accessed the system at 9:42 AM.</p>
+              </div>
+            </li>
+            <li class="flex items-start space-x-2 p-4 hover:bg-gray-50 transition">
+              <span class="material-icons text-red-500 text-base">assessment</span>
+              <div>
+                <p class="font-medium">Monthly report generated</p>
+                <p class="text-xs text-gray-500">Alumni statistics report is now available.</p>
+              </div>
+            </li>
+            <li class="flex items-start space-x-2 p-4 hover:bg-gray-50 transition">
+              <span class="material-icons text-green-500 text-base">person_add</span>
+              <div>
+                <p class="font-medium">New alumni registered</p>
+                <p class="text-xs text-gray-500">Maria Garcia joined the alumni network.</p>
+              </div>
+            </li>
+            <li class="flex items-start space-x-2 p-4 hover:bg-gray-50 transition">
+              <span class="material-icons text-yellow-500 text-base">notifications_active</span>
+              <div>
+                <p class="font-medium">System alert triggered</p>
+                <p class="text-xs text-gray-500">Backup failed on server #3.</p>
+              </div>
+            </li>
+          </ul>
+          
+
+    <!-- Footer -->
+    <div class="text-center text-xs text-gray-500 bg-gray-50 py-2">
+      You have 16 unread notifications
+    </div>
+  </div>
+</div>
+
+          <!-- Profile Dropdown -->
+          <div class="relative" x-data="{ open: false }">
+            <div class="flex items-center space-x-2 cursor-pointer" @click="open = !open">
+              <span class="text-sm text-gray-600 hidden sm:block">Admin</span>
+              <img src="assets/profile.jpeg" alt="Profile" class="w-10 h-10 rounded-full border">
+            </div>
+            <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-36 bg-white border rounded shadow-lg z-50">
+              <a href="index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-500 hover:text-white transition">Log Out</a>
+            </div>
+          </div>
+
+        </div>
+      </header>
+
+    <!-- Page Content -->
+    <main class="p-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+        <div class="bg-white p-4 rounded-xl shadow hover:shadow-md transition">
+          <p class="text-sm text-gray-500">Total Alumni</p>
+          <h3 class="text-2xl font-bold text-blue-600">567</h3>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow hover:shadow-md transition">
+          <p class="text-sm text-gray-500">Employed</p>
+          <h3 class="text-2xl font-bold text-green-500">412</h3>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow hover:shadow-md transition">
+          <p class="text-sm text-gray-500">Further Studies</p>
+          <h3 class="text-2xl font-bold text-yellow-500">89</h3>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow hover:shadow-md transition">
+          <p class="text-sm text-gray-500">Active Users</p>
+          <h3 class="text-2xl font-bold text-red-500">120</h3>
+        </div>
+      </div>
+
+      <!-- Alumni Table -->
+      <div class="bg-white p-6 rounded-xl shadow">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
+          <h2 class="text-lg font-semibold mb-2 sm:mb-0">Alumni Records</h2>
+          <div class="flex flex-col sm:flex-row sm:items-center gap-2">
+            <input type="text" id="searchInput" placeholder="Search name or year"
+  class="border border-gray-300 rounded-lg px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+            <select class="border border-gray-300 rounded-lg px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <option value="">All Programs</option>
+              <option value="BSIT">BSIT</option>
+              <option value="BSBA">BSBA</option>
+              <option value="BSN">BSN</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Table -->
+<div class="overflow-x-auto">
+  <table class="min-w-full divide-y divide-gray-200 text-sm">
+    <thead class="bg-gray-100 text-gray-700">
+      <tr>
+        <th class="px-4 py-2 text-left font-medium">#</th>
+        <th class="px-4 py-2 text-left font-medium">Name</th>
+        <th class="px-4 py-2 text-left font-medium">Program</th>
+        <th class="px-4 py-2 text-left font-medium">Grad Year</th>
+        <th class="px-4 py-2 text-left font-medium">Employment Status</th>
+        <th class="px-4 py-2 text-left font-medium">Actions</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-200">
+      <tr class="hover:bg-gray-50"><td class="px-4 py-2">1</td><td class="px-4 py-2">Juan Dela Cruz</td><td class="px-4 py-2">BSIT</td><td class="px-4 py-2">2021</td><td class="px-4 py-2">Employed</td><td class="px-4 py-2"><a href="#"><button class="bg-blue-500 text-white px-3 py-1 rounded text-xs">View Profile</button></a></td></tr>
+      <tr class="hover:bg-gray-50"><td class="px-4 py-2">2</td><td class="px-4 py-2">Marites Rodriguez</td><td class="px-4 py-2">BSBA</td><td class="px-4 py-2">2020</td><td class="px-4 py-2">Self-Employed</td><td class="px-4 py-2"><a href="#"><button class="bg-blue-500 text-white px-3 py-1 rounded text-xs">View Profile</button></a></td></tr>
+      <tr class="hover:bg-gray-50"><td class="px-4 py-2">3</td><td class="px-4 py-2">Makagago Del Rosario</td><td class="px-4 py-2">BSIT</td><td class="px-4 py-2">2022</td><td class="px-4 py-2">Freelancer</td><td class="px-4 py-2"><a href="#"><button class="bg-blue-500 text-white px-3 py-1 rounded text-xs">View Profile</button></a></td></tr>
+      <tr class="hover:bg-gray-50"><td class="px-4 py-2">4</td><td class="px-4 py-2">Tolits Escalera</td><td class="px-4 py-2">BSED</td><td class="px-4 py-2">2019</td><td class="px-4 py-2">Unemployed</td><td class="px-4 py-2"><a href="#"><button class="bg-blue-500 text-white px-3 py-1 rounded text-xs">View Profile</button></a></td></tr>
+      <tr class="hover:bg-gray-50"><td class="px-4 py-2">5</td><td class="px-4 py-2">Beshie Gomez</td><td class="px-4 py-2">BSHRM</td><td class="px-4 py-2">2021</td><td class="px-4 py-2">Employed</td><td class="px-4 py-2"><a href="#"><button class="bg-blue-500 text-white px-3 py-1 rounded text-xs">View Profile</button></a></td></tr>
+      <tr class="hover:bg-gray-50"><td class="px-4 py-2">6</td><td class="px-4 py-2">Zeinab Harake</td><td class="px-4 py-2">BSCOMM</td><td class="px-4 py-2">2018</td><td class="px-4 py-2">Content Creator</td><td class="px-4 py-2"><a href="#"><button class="bg-blue-500 text-white px-3 py-1 rounded text-xs">View Profile</button></a></td></tr>
+      <tr class="hover:bg-gray-50"><td class="px-4 py-2">7</td><td class="px-4 py-2">Bossing Vic Sotto</td><td class="px-4 py-2">BSENTREP</td><td class="px-4 py-2">2005</td><td class="px-4 py-2">Business Owner</td><td class="px-4 py-2"><a href="#"><button class="bg-blue-500 text-white px-3 py-1 rounded text-xs">View Profile</button></a></td></tr>
+      <tr class="hover:bg-gray-50"><td class="px-4 py-2">8</td><td class="px-4 py-2">Yorme Isko Moreno</td><td class="px-4 py-2">BSPOLSCI</td><td class="px-4 py-2">2010</td><td class="px-4 py-2">Public Servant</td><td class="px-4 py-2"><a href="#"><button class="bg-blue-500 text-white px-3 py-1 rounded text-xs">View Profile</button></a></td></tr>
+      <tr class="hover:bg-gray-50"><td class="px-4 py-2">9</td><td class="px-4 py-2">Jollibee Mascot</td><td class="px-4 py-2">BSHRM</td><td class="px-4 py-2">2000</td><td class="px-4 py-2">Corporate Icon</td><td class="px-4 py-2"><a href="#"><button class="bg-blue-500 text-white px-3 py-1 rounded text-xs">View Profile</button></a></td></tr>
+      <tr class="hover:bg-gray-50"><td class="px-4 py-2">10</td><td class="px-4 py-2">Leng Altura</td><td class="px-4 py-2">BSCRIM</td><td class="px-4 py-2">2023</td><td class="px-4 py-2">Tiktokerist</td><td class="px-4 py-2"><a href="#"><button class="bg-blue-500 text-white px-3 py-1 rounded text-xs">View Profile</button></a></td></tr>
+      <tr class="hover:bg-gray-50"><td class="px-4 py-2">11</td><td class="px-4 py-2">Pabebe Girl</td><td class="px-4 py-2">BSPSYCH</td><td class="px-4 py-2">2016</td><td class="px-4 py-2">Vlogger</td><td class="px-4 py-2"><a href="#"><button class="bg-blue-500 text-white px-3 py-1 rounded text-xs">View Profile</button></a></td></tr>
+      <tr class="hover:bg-gray-50"><td class="px-4 py-2">12</td><td class="px-4 py-2">Hasula Queen</td><td class="px-4 py-2">BSN</td><td class="px-4 py-2">2021</td><td class="px-4 py-2">OFW</td><td class="px-4 py-2"><a href="#"><button class="bg-blue-500 text-white px-3 py-1 rounded text-xs">View Profile</button></a></td></tr>
+      <tr class="hover:bg-gray-50"><td class="px-4 py-2">13</td><td class="px-4 py-2">Kween Yasmin</td><td class="px-4 py-2">BSECE</td><td class="px-4 py-2">2017</td><td class="px-4 py-2">Content Creator</td><td class="px-4 py-2"><a href="#"><button class="bg-blue-500 text-white px-3 py-1 rounded text-xs">View Profile</button></a></td></tr>
+      <tr class="hover:bg-gray-50"><td class="px-4 py-2">14</td><td class="px-4 py-2">Aling Nena</td><td class="px-4 py-2">BSED</td><td class="px-4 py-2">1999</td><td class="px-4 py-2">Retired</td><td class="px-4 py-2"><a href="#"><button class="bg-blue-500 text-white px-3 py-1 rounded text-xs">View Profile</button></a></td></tr>
+      <tr class="hover:bg-gray-50"><td class="px-4 py-2">15</td><td class="px-4 py-2">Sir Rendon</td><td class="px-4 py-2">BSED PE</td><td class="px-4 py-2">2012</td><td class="px-4 py-2">Gym Instructor</td><td class="px-4 py-2"><a href="#"><button class="bg-blue-500 text-white px-3 py-1 rounded text-xs">View Profile</button></a></td></tr>
+      <tr class="hover:bg-gray-50"><td class="px-4 py-2">16</td><td class="px-4 py-2">Momshie Melai</td><td class="px-4 py-2">BSCOMM</td><td class="px-4 py-2">2009</td><td class="px-4 py-2">TV Host</td><td class="px-4 py-2"><a href="#"><button class="bg-blue-500 text-white px-3 py-1 rounded text-xs">View Profile</button></a></td></tr>
+      <tr class="hover:bg-gray-50"><td class="px-4 py-2">17</td><td class="px-4 py-2">Dong Abay</td><td class="px-4 py-2">BSA</td><td class="px-4 py-2">2011</td><td class="px-4 py-2">Musician</td><td class="px-4 py-2"><a href="#"><button class="bg-blue-500 text-white px-3 py-1 rounded text-xs">View Profile</button></a></td></tr>
+      <tr class="hover:bg-gray-50"><td class="px-4 py-2">18</td><td class="px-4 py-2">Kuya Kim</td><td class="px-4 py-2">BSBIO</td><td class="px-4 py-2">2000</td><td class="px-4 py-2">TV Personality</td><td class="px-4 py-2"><a href="#"><button class="bg-blue-500 text-white px-3 py-1 rounded text-xs">View Profile</button></a></td></tr>
+      <tr class="hover:bg-gray-50"><td class="px-4 py-2">19</td><td class="px-4 py-2">Ate Girl Jackque</td><td class="px-4 py-2">BSHRM</td><td class="px-4 py-2">2015</td><td class="px-4 py-2">Performer</td><td class="px-4 py-2"><a href="#"><button class="bg-blue-500 text-white px-3 py-1 rounded text-xs">View Profile</button></a></td></tr>
+      <tr class="hover:bg-gray-50"><td class="px-4 py-2">20</td><td class="px-4 py-2">Aldub Forever</td><td class="px-4 py-2">BSENTREP</td><td class="px-4 py-2">2016</td><td class="px-4 py-2">Engaged</td><td class="px-4 py-2"><a href="#"><button class="bg-blue-500 text-white px-3 py-1 rounded text-xs">View Profile</button></a></td></tr>
+    </tbody>
+  </table>
+</div>
+
+      </div>
+    </main>
+  </div>
+
+  <script>
+    document.getElementById("searchInput").addEventListener("keyup", function () {
+      let filter = this.value.toLowerCase();
+      let rows = document.querySelectorAll("tbody tr");
+  
+      rows.forEach(row => {
+        let name = row.cells[1].textContent.toLowerCase();
+        let year = row.cells[3].textContent.toLowerCase();
+  
+        if (name.includes(filter) || year.includes(filter)) {
+          row.style.display = "";
+        } else {
+          row.style.display = "none";
+        }
+      });
+    });
+  </script>
+  
+</body>
+</html>

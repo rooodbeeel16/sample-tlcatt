@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ sidebarOpen: false }" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Alumni Data | TLCATT</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/TLCATT-LOGO.png" />
+
+    <!-- Tailwind & Alpine -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-100 min-h-screen flex flex-col md:flex-row overflow-x-hidden">
+  
+    <!-- Mobile Sidebar Overlay -->
+    <div x-show="sidebarOpen" class="fixed inset-0 z-40 bg-black bg-opacity-50 md:hidden" @click="sidebarOpen = false"></div>
+  
+    <!-- Sidebar -->
+    <aside 
+    :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'" 
+    class="fixed top-0 left-0 z-50 w-64 bg-white shadow-md p-4 transform transition-transform duration-300 ease-in-out h-screen 
+            md:top-0 md:translate-x-0 md:transform-none md:sticky"
+  >
+        <!-- Sidebar Header -->
+        <div class="flex flex-col items-center justify-center mb-6">
+          <img src="assets/TLCATT-LOGO.png" alt="TLC Logo" class="w-auto h-auto">
+        </div>
+
+        <!-- Navigation -->
+        <nav class="space-y-4">
+          <a href="admindashboard.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600 font-medium">
+            <span class="material-icons">dashboard</span>
+            <span>Dashboard</span>
+          </a>
+          <a href="alumnidata.html" class="flex items-center space-x-2 text-blue-600 font-semibold">
+            <span class="material-icons">group</span>
+            <span>Alumni Data<Data></Data></span>
+          </a>
+          <a href="reports.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600 font-medium">
+            <span class="material-icons">bar_chart</span>
+            <span>Reports</span>
+          </a>
+          <a href="export.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600 font-medium">
+            <span class="material-icons">download</span>
+            <span>Exports</span>
+          </a>
+          <a href="index.html" class="flex items-center space-x-2 text-gray-700 hover:text-red-600 font-medium">
+            <span class="material-icons">logout</span>
+            <span>Log Out</span>
+          </a>
+        </nav>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br> 
+            <br>
+            <br>
+            <br>       
+      </aside>
+
+  
+
+    <!-- Main Content Wrapper -->
+    <div class="flex-1 flex flex-col w-full">
+
+      <!-- Top Navbar -->
+      <header class="bg-white shadow-md p-4 flex justify-between items-center sticky top-0 z-30">
+        <!-- Sidebar Toggle (Mobile) -->
+        <div class="flex md:hidden">
+          <!-- Mobile Button -->
+          <button @click="sidebarOpen = !sidebarOpen" class="text-gray-600 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+      
+        <!-- Title (Centered) -->
+        <h1 class="text-lg md:text-xl font-semibold text-gray-800 flex-1 text-center">Alumni Data</h1>
+      
+        <!-- Profile Dropdown -->
+        <div class="relative" x-data="{ open: false }">
+          <div class="flex items-center space-x-2 cursor-pointer" @click="open = !open">
+            <span class="text-sm text-gray-600 hidden sm:block">Admin</span>
+            <img src="assets/profile.jpeg" alt="Profile" class="w-10 h-10 rounded-full border">
+          </div>
+          <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-36 bg-white border rounded shadow-lg z-50">
+            <a href="index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-500 hover:text-white transition">Log Out</a>
+          </div>
+        </div>
+      </header>
+
+  <!-- Main Content -->
+<main class="flex-1 p-6">
+  <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-4 mb-6">
+    <!-- Search Input -->
+    <div class="relative w-full max-w-xs">
+      <input
+        type="text"
+        placeholder="Search alumni..."
+        id="searchInput"
+        class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+      />
+      <div class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round"
+                d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Program Filter -->
+    <div class="w-full max-w-xs mt-4 sm:mt-0">
+      <select
+        id="programFilter"
+        class="w-full py-2 px-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+      >
+        <option value="">All Programs</option>
+        <option value="BSIT">BSIT Graduates</option>
+        <option value="BSCS">BSCS Graduates</option>
+        <option value="BSIS">BSIS Graduates</option>
+        <option value="BSBA">BSBA Graduates</option>
+        <option value="BSED">BSED Graduates</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+    
+    <!-- 12 Alumni Cards -->
+    <div class="bg-white p-6 rounded-xl shadow-md text-center alumni-card" data-course="BSIT">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfbhYSsLOOkv8oF-7frUQfZ_BGhnhO5GGP0ejnJxYYAkdWshj5YACYboNixvjqkNGeUBY&usqp=CAU" alt="Profile" class="w-24 h-24 mx-auto rounded-full mb-4 shadow-sm">
+      <h2 class="text-xl font-semibold text-gray-800">Maria Santos</h2>
+      <p class="text-sm text-gray-600">ID: 2018-00001</p>
+      <p class="text-sm">Course: BS Information Technology</p>
+      <p class="text-sm">Graduated: 2022</p>
+      <p class="text-sm">Email: maria.santos@example.com</p>
+      <p class="text-sm text-green-600 font-medium mt-2">Employed at Accenture</p>
+      <p class="text-sm italic">Software Developer</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-xl shadow-md text-center alumni-card" data-course="BSCS">
+      <img src="https://i.pinimg.com/736x/22/c4/46/22c44609afce1a3580dea3e395f02397.jpg" alt="Profile" class="w-24 h-24 mx-auto rounded-full mb-4 shadow-sm">
+      <h2 class="text-xl font-semibold text-gray-800">John Rivera</h2>
+      <p class="text-sm text-gray-600">ID: 2017-00045</p>
+      <p class="text-sm">Course: BS Computer Science</p>
+      <p class="text-sm">Graduated: 2021</p>
+      <p class="text-sm">Email: john.rivera@example.com</p>
+      <p class="text-sm text-yellow-600 font-medium mt-2">Seeking Opportunities</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-xl shadow-md text-center alumni-card" data-course="BSIS">
+      <img src="https://i.pinimg.com/236x/f0/44/12/f04412c82d9898043299baf72fce9ea6.jpg" alt="Profile" class="w-24 h-24 mx-auto rounded-full mb-4 shadow-sm">
+      <h2 class="text-xl font-semibold text-gray-800">Angelica Cruz</h2>
+      <p class="text-sm text-gray-600">ID: 2019-00110</p>
+      <p class="text-sm">Course: BS Information Systems</p>
+      <p class="text-sm">Graduated: 2023</p>
+      <p class="text-sm">Email: angelica.cruz@example.com</p>
+      <p class="text-sm text-green-600 font-medium mt-2">Employed at GCash</p>
+      <p class="text-sm italic">Business Analyst</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-xl shadow-md text-center alumni-card" data-course="BSBA">
+      <img src="https://us-tuna-sounds-images.voicemod.net/a438b16c-d4bc-4c7b-b270-6b683434a21e-1668124278647.jpeg" alt="Profile" class="w-24 h-24 mx-auto rounded-full mb-4 shadow-sm">
+      <h2 class="text-xl font-semibold text-gray-800">Carlos Mendoza</h2>
+      <p class="text-sm text-gray-600">ID: 2016-00022</p>
+      <p class="text-sm">Course: BSBA</p>
+      <p class="text-sm">Graduated: 2020</p>
+      <p class="text-sm">Email: carlos.mendoza@example.com</p>
+      <p class="text-sm text-green-600 font-medium mt-2">Marketing Officer at Jollibee Foods Corp.</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-xl shadow-md text-center alumni-card" data-course="BSED">
+      <img src="https://i.pinimg.com/564x/a7/3b/d8/a73bd8dc7800973119239fde36d77677.jpg" alt="Profile" class="w-24 h-24 mx-auto rounded-full mb-4 shadow-sm">
+      <h2 class="text-xl font-semibold text-gray-800">Andrea Lim</h2>
+      <p class="text-sm text-gray-600">ID: 2020-00145</p>
+      <p class="text-sm">Course: BSED</p>
+      <p class="text-sm">Graduated: 2024</p>
+      <p class="text-sm">Email: andrea.lim@example.com</p>
+      <p class="text-sm text-green-600 font-medium mt-2">Teacher at DepEd</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-xl shadow-md text-center alumni-card" data-course="BSCS">
+      <img src="https://us-tuna-sounds-images.voicemod.net/818d1387-d612-412f-9354-3a1ba09ab197-1668121464446.png" alt="Profile" class="w-24 h-24 mx-auto rounded-full mb-4 shadow-sm">
+      <h2 class="text-xl font-semibold text-gray-800">Lance Navarro</h2>
+      <p class="text-sm text-gray-600">ID: 2015-00321</p>
+      <p class="text-sm">Course: BS Computer Science</p>
+      <p class="text-sm">Graduated: 2019</p>
+      <p class="text-sm">Email: lance.navarro@example.com</p>
+      <p class="text-sm text-green-600 font-medium mt-2">Full-Stack Developer at Canva</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-xl shadow-md text-center alumni-card" data-course="BSIT">
+      <img src="https://i.pinimg.com/236x/4c/84/e8/4c84e810b6dffc2ec95ea8e3aa718216.jpg" alt="Profile" class="w-24 h-24 mx-auto rounded-full mb-4 shadow-sm">
+      <h2 class="text-xl font-semibold text-gray-800">Ella Ramos</h2>
+      <p class="text-sm text-gray-600">ID: 2018-00411</p>
+      <p class="text-sm">Course: BS Information Technology</p>
+      <p class="text-sm">Graduated: 2022</p>
+      <p class="text-sm">Email: ella.ramos@example.com</p>
+      <p class="text-sm text-yellow-600 font-medium mt-2">Freelancer</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-xl shadow-md text-center alumni-card" data-course="BSIS">
+      <img src="https://i.pinimg.com/474x/64/07/fe/6407fed479ae13394d59822b12bc2ec2.jpg" alt="Profile" class="w-24 h-24 mx-auto rounded-full mb-4 shadow-sm">
+      <h2 class="text-xl font-semibold text-gray-800">Mark Dela Cruz</h2>
+      <p class="text-sm text-gray-600">ID: 2019-00088</p>
+      <p class="text-sm">Course: BS Information Systems</p>
+      <p class="text-sm">Graduated: 2023</p>
+      <p class="text-sm">Email: mark.delacruz@example.com</p>
+      <p class="text-sm text-green-600 font-medium mt-2">UX Designer at PayMaya</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-xl shadow-md text-center alumni-card" data-course="BSED">
+      <img src="https://i.pinimg.com/736x/28/77/85/2877855cc31e70b22c6a04addfdf15bb.jpg" alt="Profile" class="w-24 h-24 mx-auto rounded-full mb-4 shadow-sm">
+      <h2 class="text-xl font-semibold text-gray-800">Samantha Uy</h2>
+      <p class="text-sm text-gray-600">ID: 2021-00300</p>
+      <p class="text-sm">Course: BSED</p>
+      <p class="text-sm">Graduated: 2025</p>
+      <p class="text-sm">Email: samantha.uy@example.com</p>
+      <p class="text-sm text-yellow-600 font-medium mt-2">Seeking Opportunities</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-xl shadow-md text-center alumni-card" data-course="BSBA">
+      <img src="https://i.imgflip.com/3pagyr.png?a484320" alt="Profile" class="w-24 h-24 mx-auto rounded-full mb-4 shadow-sm">
+      <h2 class="text-xl font-semibold text-gray-800">Kevin Bautista</h2>
+      <p class="text-sm text-gray-600">ID: 2016-00234</p>
+      <p class="text-sm">Course: BSBA</p>
+      <p class="text-sm">Graduated: 2020</p>
+      <p class="text-sm">Email: kevin.bautista@example.com</p>
+      <p class="text-sm text-green-600 font-medium mt-2">Financial Analyst at BPI</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-xl shadow-md text-center alumni-card" data-course="BSIT">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSl33v7mGhzNfBW1VNEJ7CO9SQ7kR52r93hCA&s" alt="Profile" class="w-24 h-24 mx-auto rounded-full mb-4 shadow-sm">
+      <h2 class="text-xl font-semibold text-gray-800">Trisha Gomez</h2>
+      <p class="text-sm text-gray-600">ID: 2017-00567</p>
+      <p class="text-sm">Course: BS Information Technology</p>
+      <p class="text-sm">Graduated: 2021</p>
+      <p class="text-sm">Email: trisha.gomez@example.com</p>
+      <p class="text-sm text-green-600 font-medium mt-2">Project Manager at Globe</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-xl shadow-md text-center alumni-card" data-course="BSBA">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDHcp58kzKnDRlahHUrJyzGTl4H-N22MCc_w&s" alt="Profile" class="w-24 h-24 mx-auto rounded-full mb-4 shadow-sm">
+      <h2 class="text-xl font-semibold text-gray-800">Otlum Mendoza</h2>
+      <p class="text-sm text-gray-600">ID: 2020-00022</p>
+      <p class="text-sm">Course: BSIT</p>
+      <p class="text-sm">Graduated: 2016</p>
+      <p class="text-sm">Email: otlumtalap@example.com</p>
+      <p class="text-sm text-green-600 font-medium mt-2">Marketing Officer at 7/11 Corp.</p>
+    </div>
+
+  </div>
+</main>
+
+<!-- Filter Script -->
+<script>
+  const searchInput = document.getElementById('searchInput');
+  const programFilter = document.getElementById('programFilter');
+  const alumniCards = document.querySelectorAll('.alumni-card');
+
+  function filterAlumni() {
+    const query = searchInput.value.toLowerCase();
+    const selectedProgram = programFilter.value;
+
+    alumniCards.forEach(card => {
+      const cardText = card.textContent.toLowerCase();
+      const cardProgram = card.getAttribute('data-course');
+      const matchesSearch = cardText.includes(query);
+      const matchesProgram = selectedProgram === "" || cardProgram === selectedProgram;
+
+      card.style.display = (matchesSearch && matchesProgram) ? 'block' : 'none';
+    });
+  }
+
+  searchInput.addEventListener('keyup', filterAlumni);
+  programFilter.addEventListener('change', filterAlumni);
+</script>
+
+  
+
+</body>
+</html>

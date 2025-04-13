@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ sidebarOpen: false }" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Events & Workshops | TLCATT</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/TLCATT-LOGO.png" />
+
+    <!-- Tailwind & Alpine -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-100 min-h-screen flex flex-col md:flex-row overflow-x-hidden">
+  
+    <!-- Mobile Sidebar Overlay -->
+    <div x-show="sidebarOpen" class="fixed inset-0 z-40 bg-black bg-opacity-50 md:hidden" @click="sidebarOpen = false"></div>
+  
+    <!-- Sidebar -->
+    <aside 
+    :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'" 
+    class="fixed top-0 left-0 z-50 w-64 bg-white shadow-md p-4 transform transition-transform duration-300 ease-in-out h-screen 
+           md:top-0 md:translate-x-0 md:transform-none md:sticky"
+  >
+        <!-- Sidebar Header -->
+        <div class="flex flex-col items-center justify-center mb-6">
+          <img src="assets/TLCATT-LOGO.png" alt="TLC Logo" class="w-auto h-auto">
+        </div>
+
+        <!-- Navigation -->
+        <nav class="space-y-4">
+          <a href="alumnidashboard.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600 font-medium">
+            <span class="material-icons">dashboard</span>
+            <span>Dashboard</span>
+          </a>
+          <a href="update-details.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600 font-medium">
+            <span class="material-icons">edit</span>
+            <span>Update Info</span>
+          </a>
+          <a href="connect.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600 font-medium">
+            <span class="material-icons">people</span>
+            <span>Connect with Alumni</span>
+          </a>
+          <a href="career.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600 font-medium">
+            <span class="material-icons">work</span>
+            <span>Career Resources</span>
+          </a>
+          <a href="events.html" class="flex items-center space-x-2 text-blue-600 font-semibold">
+            <span class="material-icons">event</span>
+            <span>Events & Workshops</span>
+          </a>
+          <a href="organizations.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600 font-medium">
+            <span class="material-icons">group_work</span>
+            <span>Join Groups</span>
+          </a>
+          <a href="messages.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600 font-medium">
+            <span class="material-icons">mail</span>
+            <span>Messages</span>
+          </a>
+          <a href="index.html" class="flex items-center space-x-2 text-gray-700 hover:text-red-600 font-medium">
+            <span class="material-icons">logout</span>
+            <span>Log Out</span>
+          </a>
+        </nav>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>      
+      </aside>
+
+  
+
+    <!-- Main Content Wrapper -->
+    <div class="flex-1 flex flex-col w-full">
+
+      <!-- Top Navbar -->
+      <header class="bg-white shadow-md p-4 flex justify-between items-center sticky top-0 z-30">
+        <!-- Sidebar Toggle (Mobile) -->
+        <div class="flex md:hidden">
+          <!-- Mobile Button -->
+          <button @click="sidebarOpen = !sidebarOpen" class="text-gray-600 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+      
+        <!-- Title (Centered) -->
+        <h1 class="text-lg md:text-xl font-semibold text-gray-800 flex-1 text-center">Events & Workshops</h1>
+
+        <div class="flex items-center space-x-4">  
+          <!-- Notifications -->
+          <div class="relative" x-data="{ notifyOpen: false }">
+            <!-- Bell Button -->
+            <button @click="notifyOpen = !notifyOpen" class="relative focus:outline-none">
+              <span class="material-icons text-gray-600 text-2xl">notifications</span>
+              <span class="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-xs rounded-full px-1.5 py-0.5 animate-bounce">
+                3
+              </span>
+            </button>
+    
+            <!-- Notification Dropdown -->
+            <div
+              x-show="notifyOpen"
+              @click.away="notifyOpen = false"
+              x-transition:enter="transition ease-out duration-200"
+              x-transition:enter-start="opacity-0 scale-90"
+              x-transition:enter-end="opacity-100 scale-100"
+              x-transition:leave="transition ease-in duration-100"
+              x-transition:leave-start="opacity-100 scale-100"
+              x-transition:leave-end="opacity-0 scale-95"
+              class="absolute right-0 mt-3 w-72 bg-white border border-gray-200 rounded-xl shadow-xl z-50 overflow-hidden"
+            >
+              <!-- Header -->
+              <div class="bg-blue-400  text-white p-4 text-sm font-semibold">
+                Alumni Notifications
+              </div>
+    
+              <!-- Notification Items -->
+              <ul class="divide-y divide-gray-100 text-sm text-gray-700 max-h-72 overflow-y-auto">
+                <li class="flex items-start space-x-2 p-4 hover:bg-gray-50 transition">
+                  <span class="material-icons text-blue-500 text-base">work</span>
+                  <div>
+                    <p class="font-medium">New job opportunity posted</p>
+                    <p class="text-xs text-gray-500">Check the career section for details.</p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-2 p-4 hover:bg-gray-50 transition">
+                  <span class="material-icons text-green-500 text-base">event</span>
+                  <div>
+                    <p class="font-medium">Alumni event on April 25</p>
+                    <p class="text-xs text-gray-500">Don't miss our reunion gathering!</p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-2 p-4 hover:bg-gray-50 transition">
+                  <span class="material-icons text-yellow-500 text-base">visibility</span>
+                  <div>
+                    <p class="font-medium">Profile viewed by admin</p>
+                    <p class="text-xs text-gray-500">Your profile was recently checked.</p>
+                  </div>
+                </li>
+              </ul>
+    
+        <!-- Footer -->
+        <div class="text-center text-xs text-gray-500 bg-gray-50 py-2">
+          You have 3 unread notifications
+        </div>
+      </div>
+    </div>
+      
+        <!-- Profile Dropdown -->
+        <div class="relative" x-data="{ open: false }">
+          <div class="flex items-center space-x-2 cursor-pointer" @click="open = !open">
+            <span class="text-sm text-gray-600 hidden sm:block">Andres Malvar</span>
+            <img src="assets/alumni.png" alt="Profile" class="w-10 h-10 rounded-full border">
+          </div>
+          <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-36 bg-white border rounded shadow-lg z-50">
+            <a href="index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-500 hover:text-white transition">Log Out</a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="flex-1 p-6">
+
+        <!-- Post Event Button -->
+        <div class="flex justify-end mb-4">
+          <a href="postevent.html" class="bg-blue-500 text-white px-4 py-2 text-sm rounded hover:bg-blue-600 transition">
+            + Post Event
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+          <!-- Event Card -->
+          <div class="bg-white p-6 rounded-xl shadow">
+            <img src="https://www.meetup.com/blog/wp-content/uploads/2022/01/pexels-matheus-bertelli-3856033-945x630.jpg" alt="Tech Alumni Meetup" class="w-full h-48 object-cover rounded-lg mb-4">
+            <h2 class="text-xl font-semibold text-gray-800 mb-1">Tech Alumni Meetup 2025</h2>
+            <p class="text-sm text-gray-600 mb-2">📍TLC Auditorium | 🗓️ April 25, 2025</p>
+            <p class="text-sm text-gray-700">Reconnect with fellow tech alumni, learn about the latest innovations, and network with industry leaders.</p>
+            <button class="mt-4 px-4 py-2 bg-blue-500 text-white text-sm rounded hover:bg-blue-600">Register</button>
+          </div>
+          
+
+          <!-- Workshop Card -->
+          <div class="bg-white p-6 rounded-xl shadow">
+            <img src="https://acorn.works/wp-content/uploads/2022/07/consultant-running-a-small-workshop-with-a-team-of-employees-scaled.jpg" alt="Tech Alumni Meetup" class="w-full h-48 object-cover rounded-lg mb-4">
+            <h2 class="text-xl font-semibold text-gray-800 mb-1">Resume Building Workshop</h2>
+            <p class="text-sm text-gray-600 mb-2">📍Online (Zoom) | 🗓️ May 10, 2025</p>
+            <p class="text-sm text-gray-700">Learn how to craft a standout resume and cover letter. Perfect for job seekers and new graduates.</p>
+            <button class="mt-4 px-4 py-2 bg-blue-500 text-white text-sm rounded hover:bg-blue-600">Join Workshop</button>
+          </div>
+
+          <!-- Panel Talk -->
+          <div class="bg-white p-6 rounded-xl shadow">
+            <img src="https://isbatuniversity.ac.ug/wp-content/uploads/2021/10/career.jpg" alt="Tech Alumni Meetup" class="w-full h-48 object-cover rounded-lg mb-4">
+            <h2 class="text-xl font-semibold text-gray-800 mb-1">Career Talk: Breaking into Tech</h2>
+            <p class="text-sm text-gray-600 mb-2">📍TLC Lecture Hall | 🗓️ May 18, 2025</p>
+            <p class="text-sm text-gray-700">Hear from alumni now working at top companies like Google, Canva, and Microsoft. Learn how they made it!</p>
+            <button class="mt-4 px-4 py-2 bg-blue-500 text-white text-sm rounded hover:bg-blue-600">Reserve Seat</button>
+          </div>
+
+          <!-- Seminar -->
+          <div class="bg-white p-6 rounded-xl shadow">
+            <img src="https://cdn.prod.website-files.com/64ad227a3e66387fc5d89320/65cc5760a73d6666440d87e3_seminars-training-header.jpg" alt="Tech Alumni Meetup" class="w-full h-48 object-cover rounded-lg mb-4">
+            <h2 class="text-xl font-semibold text-gray-800 mb-1">Financial Literacy Seminar</h2>
+            <p class="text-sm text-gray-600 mb-2">📍TLC Seminar Room | 🗓️ June 5, 2025</p>
+            <p class="text-sm text-gray-700">Understand how to manage your finances after college—budgeting, investing, and building credit.</p>
+            <button class="mt-4 px-4 py-2 bg-blue-500 text-white text-sm rounded hover:bg-blue-600">Attend</button>
+          </div>
+
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
