@@ -101,6 +101,74 @@
       
         <!-- Title (Centered) -->
         <h1 class="text-lg md:text-xl font-semibold text-gray-800 flex-1 text-center">Exports</h1>
+
+        <div class="flex items-center space-x-4">
+          <!-- Notifications -->
+      <div class="relative" x-data="{ notifyOpen: false }">
+        <!-- Bell Button -->
+        <button @click="notifyOpen = !notifyOpen" class="relative focus:outline-none">
+          <span class="material-icons text-gray-600 text-2xl">notifications</span>
+          <span class="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-xs rounded-full px-1.5 py-0.5 animate-bounce">
+            12
+          </span>
+        </button>
+
+        <!-- Notification Dropdown -->
+        <div
+          x-show="notifyOpen"
+          @click.away="notifyOpen = false"
+          x-transition:enter="transition ease-out duration-200"
+          x-transition:enter-start="opacity-0 scale-90"
+          x-transition:enter-end="opacity-100 scale-100"
+          x-transition:leave="transition ease-in duration-100"
+          x-transition:leave-start="opacity-100 scale-100"
+          x-transition:leave-end="opacity-0 scale-95"
+          class="absolute right-0 mt-3 w-72 bg-white border border-gray-200 rounded-xl shadow-xl z-50 overflow-hidden"
+        >
+          <!-- Header -->
+          <div class="bg-blue-400  text-white p-4 text-sm font-semibold">
+            Notifications
+          </div>
+
+          <!-- Notification Items -->
+          <ul class="divide-y divide-gray-100 text-sm text-gray-700 max-h-72 overflow-y-auto">
+            <li class="flex items-start space-x-2 p-4 hover:bg-gray-50 transition">
+              <span class="material-icons text-indigo-500 text-base">login</span>
+              <div>
+                <p class="font-medium">User login detected</p>
+                <p class="text-xs text-gray-500">John Doe accessed the system at 9:42 AM.</p>
+              </div>
+            </li>
+            <li class="flex items-start space-x-2 p-4 hover:bg-gray-50 transition">
+              <span class="material-icons text-red-500 text-base">assessment</span>
+              <div>
+                <p class="font-medium">Monthly report generated</p>
+                <p class="text-xs text-gray-500">Alumni statistics report is now available.</p>
+              </div>
+            </li>
+            <li class="flex items-start space-x-2 p-4 hover:bg-gray-50 transition">
+              <span class="material-icons text-green-500 text-base">person_add</span>
+              <div>
+                <p class="font-medium">New alumni registered</p>
+                <p class="text-xs text-gray-500">Maria Garcia joined the alumni network.</p>
+              </div>
+            </li>
+            <li class="flex items-start space-x-2 p-4 hover:bg-gray-50 transition">
+              <span class="material-icons text-yellow-500 text-base">notifications_active</span>
+              <div>
+                <p class="font-medium">System alert triggered</p>
+                <p class="text-xs text-gray-500">Backup failed on server #3.</p>
+              </div>
+            </li>
+          </ul>
+          
+
+    <!-- Footer -->
+    <div class="text-center text-xs text-gray-500 bg-gray-50 py-2">
+      You have 16 unread notifications
+    </div>
+  </div>
+</div>
       
         <!-- Profile Dropdown -->
         <div class="relative" x-data="{ open: false }">
